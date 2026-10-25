@@ -199,7 +199,7 @@ def load_pipeline_data() -> Dict[str, Any]:
                 "skills": ["react", "node.js", "clean-architecture", "sql"],
                 "contact_name": "Henrik Lindqvist (Talent Partner)",
                 "contact_email": "henrik@proxify.io",
-                "notes": "Pitched via specialized European CTO letter. Highlighted European timezone alignment (Egypt GMT+3) and 10+ verified enterprise repos.",
+                "notes": "Pitched via specialized European CTO letter. Highlighted European timezone alignment (UTC+3 / US & EU Overlap) and 10+ verified enterprise repos.",
                 "created_at": "2026-10-18T11:00:00Z",
                 "updated_at": "2026-10-18T11:15:00Z",
             },
@@ -670,7 +670,7 @@ def generate_pitch(req: PitchRequest) -> Dict[str, Any]:
             f"• High-throughput Node.js & Python backend services with Redis caching handling thousands of req/sec.\n"
             f"• Enterprise RAG & AI Agent pipelines with strict SafeSQL read-only barriers and automated test coverage.\n\n"
             f"{f'Note on context: {req.custom_notes.strip()}' + chr(10) + chr(10) if req.custom_notes else ''}"
-            f"I work seamlessly with European and US time zones (Egypt GMT+3), maintaining daily async Git workflows and clean PRs. "
+            f"I work seamlessly with European and US time zones (UTC+3 / US & EU Overlap), maintaining daily async Git workflows and clean PRs. "
             f"Are you open to a brief 10-minute technical sync this week to explore how I can support your roadmap?\n\n"
             f"Best regards,\n"
             f"Eng. Abdelrahman Rashad\n"

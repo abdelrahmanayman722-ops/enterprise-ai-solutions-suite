@@ -610,7 +610,7 @@
         `• Next.js 15 App Router & React 19 dashboards with sub-100ms TTFB.\n` +
         `• Resilient Python RAG & automation pipelines with strict SafeSQL read-only barriers.\n` +
         `• High-concurrency Node.js REST APIs with Redis caching.\n\n` +
-        `I work seamlessly in European and US time zones (Egypt GMT+3) with daily async updates.\n` +
+        `I work seamlessly in European and US time zones (UTC+3 / US & EU Overlap) with daily async updates.\n` +
         `Available for a brief 10-minute technical chat this week.\n\n` +
         `Best regards,\nEng. Abdelrahman Rashad\nSenior Full-Stack & Solutions Architect`;
     } else {
