@@ -1,0 +1,19 @@
+# ==============================================================================
+# The Ultimate High-Ticket Software Revenue Engine
+# Unified Python Runtime Dependencies
+# Author: Eng. Abdelrahman Rashad
+# ==============================================================================
+
+# Core Web Framework & ASGI Server (Executive Cockpit Backend)
+fastapi>=0.110.0
+uvicorn>=0.28.0
+
+# Schema Validation & Serialization
+pydantic>=2.0.0
+
+# HTTP Clients & Network Transport (Contract Hunter & Scraper Pipeline)
+requests>=2.31.0
+httpx>=0.27.0
+
+# Automated Testing & Verification Framework
+pytest>=8.0.0

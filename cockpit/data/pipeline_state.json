@@ -1,0 +1,204 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-10-25T18:37:42.954878+00:00",
+  "deals": [
+    {
+      "id": "deal-won-01",
+      "opportunity_id": "opp-hyperflow-01",
+      "title": "Fractional CTO & AI Pipeline Lead",
+      "company": "HyperFlow Systems",
+      "stage": "won",
+      "monthly_value": 6000.0,
+      "source": "Y Combinator",
+      "skills": [
+        "next.js",
+        "python",
+        "ai",
+        "node.js"
+      ],
+      "contact_name": "Marcus Vance (Founder & CEO)",
+      "contact_email": "marcus@hyperflow.ai",
+      "notes": "Signed $6,000/mo 6-month retainer for architectural direction and autonomous AI agent deployment. Payment via Stripe Invoicing.",
+      "created_at": "2026-10-01T10:00:00Z",
+      "updated_at": "2026-10-08T15:30:00Z"
+    },
+    {
+      "id": "deal-won-02",
+      "opportunity_id": "opp-apex-02",
+      "title": "Enterprise RAG & Data Automation Retainer",
+      "company": "Apex Venture Studio",
+      "stage": "won",
+      "monthly_value": 4000.0,
+      "source": "WeWorkRemotely",
+      "skills": [
+        "python",
+        "rag",
+        "sql",
+        "automation"
+      ],
+      "contact_name": "Elena Rostova (Head of Product)",
+      "contact_email": "elena@apexventures.io",
+      "notes": "Active contract at $4,000/mo. Maintaining enterprise RAG agent with SafeSQL barrier and resilient data scraping pipeline.",
+      "created_at": "2026-10-05T12:00:00Z",
+      "updated_at": "2026-10-12T17:00:00Z"
+    },
+    {
+      "id": "deal-contract-01",
+      "opportunity_id": "opp-scalegrid-03",
+      "title": "Enterprise Next.js SaaS Modernization",
+      "company": "ScaleGrid Corp",
+      "stage": "contract_sent",
+      "monthly_value": 5800.0,
+      "source": "Hacker News",
+      "skills": [
+        "next.js",
+        "react",
+        "node.js",
+        "redis"
+      ],
+      "contact_name": "David Sterling (VP Engineering)",
+      "contact_email": "d.sterling@scalegrid.com",
+      "notes": "MSA and SOW sent on Oct 21. Standard 6-month engagement at $5,800/mo for full Next.js 15 App Router migration.",
+      "created_at": "2026-10-10T14:00:00Z",
+      "updated_at": "2026-10-21T11:20:00Z"
+    },
+    {
+      "id": "deal-interview-01",
+      "opportunity_id": "opp-ddg-04",
+      "title": "Senior Backend & Microservices Architect",
+      "company": "DuckDuckGo",
+      "stage": "interviewing",
+      "monthly_value": 5500.0,
+      "source": "RemoteOK",
+      "skills": [
+        "node.js",
+        "python",
+        "high-concurrency",
+        "redis"
+      ],
+      "contact_name": "Sarah Lin (Engineering Lead)",
+      "contact_email": "slin@duckduckgo.com",
+      "notes": "Passed technical design interview. Final round scheduled with Director of Platform Architecture on Thursday.",
+      "created_at": "2026-10-12T09:15:00Z",
+      "updated_at": "2026-10-22T16:45:00Z"
+    },
+    {
+      "id": "deal-interview-02",
+      "opportunity_id": "opp-pavlov-05",
+      "title": "Full-Stack Solutions Architect",
+      "company": "Pavlov Tech",
+      "stage": "interviewing",
+      "monthly_value": 4500.0,
+      "source": "Wellfound",
+      "skills": [
+        "next.js",
+        "react",
+        "python",
+        "fastapi"
+      ],
+      "contact_name": "Alex Pavlov (Co-Founder)",
+      "contact_email": "alex@pavlovtech.eu",
+      "notes": "Completed initial intro call. Pitch resonated strongly with their Q4 roadmap. Code sample review underway.",
+      "created_at": "2026-10-14T08:30:00Z",
+      "updated_at": "2026-10-20T13:10:00Z"
+    },
+    {
+      "id": "deal-pitched-01",
+      "opportunity_id": "opp-proxify-06",
+      "title": "Senior Fullstack Developer (React/Node)",
+      "company": "Proxify AB",
+      "stage": "pitched",
+      "monthly_value": 5200.0,
+      "source": "Direct",
+      "skills": [
+        "react",
+        "node.js",
+        "clean-architecture",
+        "sql"
+      ],
+      "contact_name": "Henrik Lindqvist (Talent Partner)",
+      "contact_email": "henrik@proxify.io",
+      "notes": "Pitched via specialized European CTO letter. Highlighted European timezone alignment (Egypt GMT+3) and 10+ verified enterprise repos.",
+      "created_at": "2026-10-18T11:00:00Z",
+      "updated_at": "2026-10-18T11:15:00Z"
+    },
+    {
+      "id": "deal-pitched-02",
+      "opportunity_id": "opp-yuno-07",
+      "title": "Lead AI Engineer - Agentic Systems",
+      "company": "Yuno",
+      "stage": "pitched",
+      "monthly_value": 5000.0,
+      "source": "RemoteOK",
+      "skills": [
+        "python",
+        "ai",
+        "agents",
+        "langchain"
+      ],
+      "contact_name": "Talent Acquisition Team",
+      "contact_email": "hiring@yuno.payments",
+      "notes": "Submitted founder pitch with dynamic tech proofs from our Enterprise RAG suite.",
+      "created_at": "2026-10-19T14:40:00Z",
+      "updated_at": "2026-10-19T14:45:00Z"
+    },
+    {
+      "id": "deal-lead-01",
+      "opportunity_id": "opp-sanctuary-08",
+      "title": "Head of Technology & AI Integration",
+      "company": "Sanctuary Computer",
+      "stage": "leads",
+      "monthly_value": 6000.0,
+      "source": "RemoteOK",
+      "skills": [
+        "full stack",
+        "python",
+        "next.js",
+        "ai"
+      ],
+      "contact_name": "Hugh Francis (Partner)",
+      "contact_email": "hello@sanctuary.computer",
+      "notes": "Identified in fresh scrape. Top tier YC/studio client with urgent need for technical leadership.",
+      "created_at": "2026-10-23T06:00:00Z",
+      "updated_at": "2026-10-23T06:00:00Z"
+    },
+    {
+      "id": "deal-lead-02",
+      "opportunity_id": "opp-nexus-09",
+      "title": "Full-Stack AI Solutions Developer",
+      "company": "Nexus AI Labs",
+      "stage": "leads",
+      "monthly_value": 4800.0,
+      "source": "Hacker News",
+      "skills": [
+        "next.js",
+        "python",
+        "ai",
+        "react"
+      ],
+      "contact_name": "Founding Team",
+      "contact_email": "eng@nexusailabs.com",
+      "notes": "YC W24 AI startup expanding their frontend and agent infrastructure. $4,800/mo contract opportunity.",
+      "created_at": "2026-10-23T07:15:00Z",
+      "updated_at": "2026-10-23T07:15:00Z"
+    },
+    {
+      "id": "deal-closed-01",
+      "opportunity_id": "opp-oldtech-10",
+      "title": "Legacy Maintenance Contractor",
+      "company": "Legacy Systems Corp",
+      "stage": "closed",
+      "monthly_value": 2500.0,
+      "source": "Upwork",
+      "skills": [
+        "php",
+        "wordpress"
+      ],
+      "contact_name": "Recruiter",
+      "contact_email": "info@legacy.com",
+      "notes": "Declined by Abdelrahman: rate ($2,500/mo) fell below our $3,500/mo high-ticket policy, and stack does not align with core high-value expertise.",
+      "created_at": "2026-10-02T10:00:00Z",
+      "updated_at": "2026-10-03T16:00:00Z"
+    }
+  ]
+}

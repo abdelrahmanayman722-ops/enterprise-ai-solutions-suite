@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise SaaS Operations & Telemetry Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-base: #080c14;
+            --bg-card: #0f1626;
+            --border-subtle: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-amber: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-base); color: var(--text-main); padding: 24px; min-height: 100vh; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .card-val { font-size: 28px; font-weight: 800; }
+        .badge { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+        .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
+        .table-wrap { overflow-x: auto; margin-top: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+        th, td { padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        th { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .status-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+        .status-active { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+            <h1 style="font-size: 24px; font-weight: 800;">Apex Enterprise Telemetry Command</h1>
+            <p style="color: var(--text-muted); font-size: 13px;">Architecture: Next.js 15 • React 19 • Node.js Backend • PostgreSQL Cluster</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <span class="status-pill status-active"><i class="fas fa-circle" style="font-size: 8px;"></i> Cluster Live (99.99%)</span>
+        </div>
+    </div>
+
+    <div class="grid-4">
+        <div class="card">
+            <div class="card-header">
+                <span style="font-size: 12px; color: var(--text-muted);">Annual Recurring Revenue (ARR)</span>
+                <span class="badge badge-green">+24.8% YoY</span>
+            </div>
+            <div class="card-val">$482,500</div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span style="font-size: 12px; color: var(--text-muted);">API Throughput</span>
+                <span class="badge badge-green">32ms Latency</span>
+            </div>
+            <div class="card-val">4,820 req/s</div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span style="font-size: 12px; color: var(--text-muted);">Active Microservices</span>
+                <span class="badge badge-green">Healthy</span>
+            </div>
+            <div class="card-val">18 / 18</div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span style="font-size: 12px; color: var(--text-muted);">Redis Cache Hit Ratio</span>
+                <span class="badge badge-green">Optimized</span>
+            </div>
+            <div class="card-val">96.4%</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 style="font-size: 16px; margin-bottom: 14px;">Real-Time Pipeline Execution & Enterprise Transactions</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Client / Organization</th>
+                        <th>Service Target</th>
+                        <th>Payload Size</th>
+                        <th>Execution Latency</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>#TX-849201</code></td>
+                        <td><strong>Acme FinTech Corp</strong></td>
+                        <td>POST /api/v1/auth/jwt</td>
+                        <td>1.2 KB</td>
+                        <td>24ms</td>
+                        <td><span class="status-pill status-active">200 OK</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>#TX-849202</code></td>
+                        <td><strong>Nexus Health Systems</strong></td>
+                        <td>GET /api/v1/telemetry/emr</td>
+                        <td>48.6 KB</td>
+                        <td>31ms</td>
+                        <td><span class="status-pill status-active">200 OK</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>#TX-849203</code></td>
+                        <td><strong>Apex Logistics Global</strong></td>
+                        <td>POST /api/v1/warehouse/sync</td>
+                        <td>12.4 KB</td>
+                        <td>28ms</td>
+                        <td><span class="status-pill status-active">200 OK</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

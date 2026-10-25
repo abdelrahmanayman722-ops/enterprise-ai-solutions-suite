@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Executive Operations & SaaS Telemetry Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #09090b;
+            --bg-card: #121215;
+            --bg-card-hover: #18181c;
+            --border-subtle: #27272a;
+            --border-muted: #1e1e24;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --emerald-glow: #10b981;
+            --emerald-bg: rgba(16, 185, 129, 0.12);
+            --cyan-glow: #06b6d4;
+            --cyan-bg: rgba(6, 182, 212, 0.12);
+            --amber-glow: #f59e0b;
+            --amber-bg: rgba(245, 158, 11, 0.12);
+            --rose-glow: #f43f5e;
+            --rose-bg: rgba(244, 63, 94, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 28px 36px;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 28px;
+        }
+
+        .header-brand h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .header-brand p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .pill-healthy {
+            background-color: var(--emerald-bg);
+            color: var(--emerald-glow);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--emerald-glow);
+            box-shadow: 0 0 8px var(--emerald-glow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .btn {
+            background: #18181b;
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease-out;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background: #27272a;
+            border-color: #3f3f46;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            border-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        /* Telemetry KPI Cards */
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: border-color 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            border-color: #3f3f46;
+        }
+
+        .kpi-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .kpi-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .kpi-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .badge-positive {
+            background: var(--emerald-bg);
+            color: var(--emerald-glow);
+        }
+
+        .badge-cyan {
+            background: var(--cyan-bg);
+            color: var(--cyan-glow);
+        }
+
+        .kpi-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .kpi-subtext {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Revenue Chart Card */
+        .chart-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-title h3 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .chart-title p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 3px;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .svg-container {
+            width: 100%;
+            height: 220px;
+        }
+
+        /* Fleet and Stream Section */
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        @media (min-width: 1024px) {
+            .dashboard-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .section-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-btn {
+            background: #18181b;
+            border: 1px solid var(--border-muted);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #27272a;
+            color: var(--text-primary);
+            border-color: var(--border-subtle);
+        }
+
+        .search-box {
+            background: #121215;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            outline: none;
+            width: 160px;
+        }
+
+        .search-box:focus {
+            border-color: #3b82f6;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            max-height: 380px;
+            overflow-y: auto;
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #16161a;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-muted);
+            color: var(--text-primary);
+            font-size: 12px;
+        }
+
+        tr:hover td {
+            background-color: var(--bg-card-hover);
+        }
+
+        .cell-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+
+        .pill-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+
+        .tag-active {
+            background: var(--emerald-bg);
+            color: var(--emerald-glow);
+        }
+
+        .tag-busy {
+            background: var(--cyan-bg);
+            color: var(--cyan-glow);
+        }
+
+        .tag-warn {
+            background: var(--amber-bg);
+            color: var(--amber-glow);
+        }
+
+        .tag-err {
+            background: var(--rose-bg);
+            color: var(--rose-glow);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 32px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-brand">
+            <h1>Apex Executive Operations Command</h1>
+            <p>Enterprise SaaS Intelligence • Multi-Agent Autonomous Fleet • Next.js 15 & Node.js Engine</p>
+        </div>
+        <div class="header-controls">
+            <span class="status-pill pill-healthy" id="cluster-status-pill">
+                <span class="pulse-dot"></span>
+                <span>Cluster Live (99.99%)</span>
+            </span>
+            <button class="btn" id="btn-toggle-telemetry" onclick="toggleTelemetry()">
+                <span id="telemetry-btn-text">Pause Stream</span>
+            </button>
+            <button class="btn" onclick="exportData('csv')">Export CSV</button>
+            <button class="btn" onclick="exportData('json')">Export JSON</button>
+        </div>
+    </header>
+
+    <!-- KPI Metrics Grid -->
+    <section class="telemetry-grid" aria-label="Executive Telemetry Metrics">
+        <div class="kpi-card" id="card-arr">
+            <div class="kpi-title-row">
+                <span class="kpi-title">Annual Recurring Revenue</span>
+                <span class="kpi-badge badge-positive">+24.8% YoY</span>
+            </div>
+            <div class="kpi-value" id="val-arr">$482,500</div>
+            <div class="kpi-subtext">Monthly Recurring: <strong id="val-mrr" style="color: var(--text-secondary);">$40,208/mo</strong></div>
+        </div>
+
+        <div class="kpi-card" id="card-throughput">
+            <div class="kpi-title-row">
+                <span class="kpi-title">API Throughput</span>
+                <span class="kpi-badge badge-cyan" id="badge-p95">32ms p95</span>
+            </div>
+            <div class="kpi-value" id="val-throughput">4,820 req/s</div>
+            <div class="kpi-subtext">Global peak load: 7,400 req/s</div>
+        </div>
+
+        <div class="kpi-card" id="card-fleet">
+            <div class="kpi-title-row">
+                <span class="kpi-title">AI Agent Fleet</span>
+                <span class="kpi-badge badge-positive">18 / 18 Active</span>
+            </div>
+            <div class="kpi-value" id="val-fleet">100.0%</div>
+            <div class="kpi-subtext">Zero deadlocks • 0.02% error rate</div>
+        </div>
+
+        <div class="kpi-card" id="card-cache">
+            <div class="kpi-title-row">
+                <span class="kpi-title">Redis Cache Hit Ratio</span>
+                <span class="kpi-badge badge-positive">Optimized</span>
+            </div>
+            <div class="kpi-value" id="val-cache">96.4%</div>
+            <div class="kpi-subtext">12 Sharded Cluster Nodes (1.4 TB hot)</div>
+        </div>
+    </section>
+
+    <!-- Revenue Trajectory Chart -->
+    <section class="chart-card" aria-label="Revenue Trend Visualizer">
+        <div class="chart-header">
+            <div class="chart-title">
+                <h3>Executive MRR & ARR Financial Trajectory</h3>
+                <p>12-Month Historical Trajectory and Predictive Machine-Learning Run Rate ($USD)</p>
+            </div>
+            <div class="chart-legend">
+                <span><span class="legend-dot" style="background: #3b82f6;"></span>Actual Invoiced MRR</span>
+                <span><span class="legend-dot" style="background: #10b981;"></span>Projected Trajectory</span>
+            </div>
+        </div>
+        <div class="svg-container">
+            <svg viewBox="0 0 1000 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+                    </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="50" y1="30" x2="950" y2="30" stroke="#1f1f23" stroke-width="1"/>
+                <line x1="50" y1="80" x2="950" y2="80" stroke="#1f1f23" stroke-width="1"/>
+                <line x1="50" y1="130" x2="950" y2="130" stroke="#1f1f23" stroke-width="1"/>
+                <line x1="50" y1="180" x2="950" y2="180" stroke="#1f1f23" stroke-width="1"/>
+
+                <!-- Labels -->
+                <text x="15" y="35" fill="#52525b" font-size="10" font-family="JetBrains Mono">$50k</text>
+                <text x="15" y="85" fill="#52525b" font-size="10" font-family="JetBrains Mono">$35k</text>
+                <text x="15" y="135" fill="#52525b" font-size="10" font-family="JetBrains Mono">$20k</text>
+                <text x="15" y="185" fill="#52525b" font-size="10" font-family="JetBrains Mono">$5k</text>
+
+                <!-- Month labels -->
+                <text x="75" y="205" fill="#71717a" font-size="11">Nov</text>
+                <text x="155" y="205" fill="#71717a" font-size="11">Dec</text>
+                <text x="235" y="205" fill="#71717a" font-size="11">Jan</text>
+                <text x="315" y="205" fill="#71717a" font-size="11">Feb</text>
+                <text x="395" y="205" fill="#71717a" font-size="11">Mar</text>
+                <text x="475" y="205" fill="#71717a" font-size="11">Apr</text>
+                <text x="555" y="205" fill="#71717a" font-size="11">May</text>
+                <text x="635" y="205" fill="#71717a" font-size="11">Jun</text>
+                <text x="715" y="205" fill="#71717a" font-size="11">Jul</text>
+                <text x="795" y="205" fill="#71717a" font-size="11">Aug</text>
+                <text x="875" y="205" fill="#71717a" font-size="11">Sep</text>
+                <text x="945" y="205" fill="#71717a" font-size="11">Oct</text>
+
+                <!-- Area Fill -->
+                <path d="M 80,170 Q 240,150 400,120 T 720,80 L 950,45 L 950,180 L 80,180 Z" fill="url(#areaGradient)" />
+
+                <!-- Invoiced Trend Path -->
+                <path d="M 80,170 Q 240,150 400,120 T 720,80" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Projection Path (Dashed Emerald) -->
+                <path d="M 720,80 Q 830,60 950,45" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round"/>
+
+                <!-- Milestone Points -->
+                <circle cx="80" cy="170" r="4" fill="#3b82f6"/>
+                <circle cx="240" cy="150" r="4" fill="#3b82f6"/>
+                <circle cx="400" cy="120" r="4" fill="#3b82f6"/>
+                <circle cx="560" cy="100" r="4" fill="#3b82f6"/>
+                <circle cx="720" cy="80" r="5" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="950" cy="45" r="5" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Tables Row: Fleet Table & Live Transaction Feed -->
+    <div class="dashboard-row">
+
+        <!-- Active Agent Fleet Monitor -->
+        <section class="section-card" id="agent-fleet-section" aria-label="Active Agent Fleet">
+            <div class="section-header">
+                <div>
+                    <h3>Active AI Agent Fleet Monitor</h3>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Autonomous nodes operating in current cluster</p>
+                </div>
+                <span class="pill-tag tag-active" id="active-agents-count">5 Nodes Active</span>
+            </div>
+            <div class="table-wrapper">
+                <table id="fleet-table">
+                    <thead>
+                        <tr>
+                            <th>Agent ID / Name</th>
+                            <th>Role & Target</th>
+                            <th>Throughput</th>
+                            <th>Latency</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fleet-tbody">
+                        <tr>
+                            <td><strong>RAG-Worker-Alpha</strong><br><span style="color: var(--text-muted); font-size: 11px;">Claude 3.5 Sonnet</span></td>
+                            <td>Knowledge Synthesis</td>
+                            <td class="cell-mono">48 req/s</td>
+                            <td class="cell-mono">24ms</td>
+                            <td><span class="pill-tag tag-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>SafeSQL-Barrier-01</strong><br><span style="color: var(--text-muted); font-size: 11px;">AST AST/Regex Guard</span></td>
+                            <td>Read-Only Security</td>
+                            <td class="cell-mono">120 req/s</td>
+                            <td class="cell-mono">4ms</td>
+                            <td><span class="pill-tag tag-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scraper-Crawler-09</strong><br><span style="color: var(--text-muted); font-size: 11px;">Client Hints / Jitter</span></td>
+                            <td>Multi-Domain Mining</td>
+                            <td class="cell-mono">85 req/s</td>
+                            <td class="cell-mono">18ms</td>
+                            <td><span class="pill-tag tag-busy">Ingesting</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contract-Hunter-Bot</strong><br><span style="color: var(--text-muted); font-size: 11px;">HN / WWR Ingest</span></td>
+                            <td>High-Ticket Pipeline</td>
+                            <td class="cell-mono">14 req/s</td>
+                            <td class="cell-mono">42ms</td>
+                            <td><span class="pill-tag tag-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anomaly-Sentinel</strong><br><span style="color: var(--text-muted); font-size: 11px;">Real-Time Watchdog</span></td>
+                            <td>Zero-Day Audit</td>
+                            <td class="cell-mono">310 req/s</td>
+                            <td class="cell-mono">2ms</td>
+                            <td><span class="pill-tag tag-active">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Real-Time Transaction Stream -->
+        <section class="section-card" id="transactions-section" aria-label="Real-Time Enterprise Transaction Stream">
+            <div class="section-header">
+                <div>
+                    <h3>Real-Time Enterprise Transaction Stream</h3>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Live microservice RPC and API events</p>
+                </div>
+                <div class="filter-group">
+                    <input type="text" id="stream-search" class="search-box" placeholder="Search..." oninput="handleSearch(this.value)">
+                    <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+                    <button class="filter-btn" data-filter="success" onclick="setFilter('success', this)">200 OK</button>
+                    <button class="filter-btn" data-filter="latency" onclick="setFilter('latency', this)">p95 &gt;30ms</button>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>TX ID</th>
+                            <th>Client Org</th>
+                            <th>Endpoint</th>
+                            <th>Latency</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-tbody">
+                        <tr data-status="success" data-latency="24">
+                            <td class="cell-mono"><code>#TX-948101</code></td>
+                            <td><strong>Acme FinTech</strong></td>
+                            <td class="cell-mono">POST /api/v1/auth/jwt</td>
+                            <td class="cell-mono">24ms</td>
+                            <td><span class="pill-tag tag-active">200 OK</span></td>
+                        </tr>
+                        <tr data-status="success" data-latency="38">
+                            <td class="cell-mono"><code>#TX-948102</code></td>
+                            <td><strong>Nexus Health</strong></td>
+                            <td class="cell-mono">GET /api/v1/rag/query</td>
+                            <td class="cell-mono">38ms</td>
+                            <td><span class="pill-tag tag-busy">200 OK</span></td>
+                        </tr>
+                        <tr data-status="success" data-latency="18">
+                            <td class="cell-mono"><code>#TX-948103</code></td>
+                            <td><strong>Apex Global</strong></td>
+                            <td class="cell-mono">POST /api/v1/sql/execute</td>
+                            <td class="cell-mono">18ms</td>
+                            <td><span class="pill-tag tag-active">200 OK</span></td>
+                        </tr>
+                        <tr data-status="success" data-latency="46">
+                            <td class="cell-mono"><code>#TX-948104</code></td>
+                            <td><strong>Solaria Capital</strong></td>
+                            <td class="cell-mono">GET /api/v1/telemetry/stream</td>
+                            <td class="cell-mono">46ms</td>
+                            <td><span class="pill-tag tag-warn">200 OK</span></td>
+                        </tr>
+                        <tr data-status="success" data-latency="22">
+                            <td class="cell-mono"><code>#TX-948105</code></td>
+                            <td><strong>Vanguard Sec</strong></td>
+                            <td class="cell-mono">POST /api/v1/scraper/sync</td>
+                            <td class="cell-mono">22ms</td>
+                            <td><span class="pill-tag tag-active">200 OK</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>System Version: <strong>Apex SaaS Suite v2.4.0 (Enterprise Production Build)</strong></div>
+        <div>Engine Architect: <strong>Eng. Abdelrahman Rashad</strong> • Senior Full-Stack & Solutions Architect</div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        let isTelemetryActive = true;
+        let telemetryInterval = null;
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        const mockClients = [
+            'Acme FinTech Corp', 'Nexus Health Systems', 'Apex Logistics Global',
+            'Solaria AI Labs', 'Vanguard Security', 'Quantum Scale Inc', 'Hyperion Cloud'
+        ];
+
+        const mockEndpoints = [
+            'POST /api/v1/rag/query', 'GET /api/v1/telemetry/stream',
+            'POST /api/v1/sql/execute', 'POST /api/v1/auth/jwt',
+            'GET /api/v1/deals/pipeline', 'POST /api/v1/scraper/ingest'
+        ];
+
+        function toggleTelemetry() {
+            isTelemetryActive = !isTelemetryActive;
+            const btnText = document.getElementById('telemetry-btn-text');
+            const pill = document.getElementById('cluster-status-pill');
+
+            if (isTelemetryActive) {
+                btnText.textContent = 'Pause Stream';
+                pill.className = 'status-pill pill-healthy';
+                pill.innerHTML = '<span class="pulse-dot"></span><span>Cluster Live (99.99%)</span>';
+                startTelemetrySimulation();
+            } else {
+                btnText.textContent = 'Resume Stream';
+                pill.className = 'status-pill';
+                pill.style.background = '#27272a';
+                pill.style.color = '#a1a1aa';
+                pill.innerHTML = '<span style="width:7px; height:7px; border-radius:50%; background:#71717a;"></span><span>Telemetry Paused</span>';
+                if (telemetryInterval) clearInterval(telemetryInterval);
+            }
+        }
+
+        function startTelemetrySimulation() {
+            if (telemetryInterval) clearInterval(telemetryInterval);
+            telemetryInterval = setInterval(() => {
+                if (!isTelemetryActive) return;
+
+                // Jitter throughput slightly
+                const baseRps = 4820;
+                const jitter = Math.floor(Math.random() * 240) - 120;
+                const newThroughput = baseRps + jitter;
+                document.getElementById('val-throughput').textContent = newThroughput.toLocaleString() + ' req/s';
+
+                // Jitter cache hit
+                const cacheHit = (96.2 + Math.random() * 0.4).toFixed(1);
+                document.getElementById('val-cache').textContent = cacheHit + '%';
+
+                // Prepend new transaction
+                appendSimulatedTransaction();
+            }, 2500);
+        }
+
+        function appendSimulatedTransaction() {
+            const tbody = document.getElementById('transaction-tbody');
+            if (!tbody) return;
+
+            const txId = '#TX-' + Math.floor(100000 + Math.random() * 900000);
+            const client = mockClients[Math.floor(Math.random() * mockClients.length)];
+            const endpoint = mockEndpoints[Math.floor(Math.random() * mockEndpoints.length)];
+            const latency = Math.floor(14 + Math.random() * 45);
+            const isWarn = latency > 30;
+
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-status', 'success');
+            tr.setAttribute('data-latency', latency.toString());
+
+            tr.innerHTML = `
+                <td class="cell-mono"><code>${txId}</code></td>
+                <td><strong>${client}</strong></td>
+                <td class="cell-mono">${endpoint}</td>
+                <td class="cell-mono">${latency}ms</td>
+                <td><span class="pill-tag ${isWarn ? 'tag-warn' : 'tag-active'}">200 OK</span></td>
+            `;
+
+            tbody.insertBefore(tr, tbody.firstChild);
+
+            // Keep max 25 rows
+            while (tbody.children.length > 25) {
+                tbody.removeChild(tbody.lastChild);
+            }
+
+            applyFilters();
+        }
+
+        function setFilter(filterType, btnElement) {
+            currentFilter = filterType;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+            applyFilters();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val.toLowerCase().trim();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const rows = document.querySelectorAll('#transaction-tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const latency = parseInt(row.getAttribute('data-latency') || '0', 10);
+
+                let matchesFilter = true;
+                if (currentFilter === 'latency') {
+                    matchesFilter = latency > 30;
+                } else if (currentFilter === 'success') {
+                    matchesFilter = row.getAttribute('data-status') === 'success';
+                }
+
+                const matchesSearch = !searchQuery || text.includes(searchQuery);
+
+                row.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+            });
+        }
+
+        function exportData(format) {
+            const rows = document.querySelectorAll('#transaction-tbody tr');
+            const data = [];
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 5) {
+                    data.push({
+                        transaction_id: cells[0].innerText.trim(),
+                        client: cells[1].innerText.trim(),
+                        endpoint: cells[2].innerText.trim(),
+                        latency: cells[3].innerText.trim(),
+                        status: cells[4].innerText.trim()
+                    });
+                }
+            });
+
+            if (format === 'json') {
+                const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+                triggerDownload(jsonStr, 'executive_transactions.json');
+            } else if (format === 'csv') {
+                let csvContent = "data:text/csv;charset=utf-8,Transaction ID,Client Org,Endpoint,Latency,Status\n";
+                data.forEach(d => {
+                    csvContent += `"${d.transaction_id}","${d.client}","${d.endpoint}","${d.latency}","${d.status}"\n`;
+                });
+                triggerDownload(csvContent, 'executive_transactions.csv');
+            }
+        }
+
+        function triggerDownload(uri, filename) {
+            const link = document.createElement("a");
+            link.setAttribute("href", uri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Start live stream
+        startTelemetrySimulation();
+    </script>
+</body>
+</html>

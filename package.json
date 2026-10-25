@@ -1,0 +1,33 @@
+{
+  "name": "global-revenue-engine",
+  "version": "1.0.0",
+  "description": "The Ultimate High-Ticket Software Revenue Engine for Eng. Abdelrahman Rashad",
+  "main": "cockpit/server.py",
+  "scripts": {
+    "start": "python cockpit/server.py",
+    "test": "python tests/run_all_tests.py",
+    "hunter": "python contract_hunter/remote_contract_hunter.py",
+    "cockpit": "run_cockpit.bat",
+    "hunter:live": "python contract_hunter/remote_contract_hunter.py --live",
+    "hunter:fallback": "python contract_hunter/remote_contract_hunter.py --fallback",
+    "test:tier1": "python tests/tier1_feature_tests.py",
+    "test:tier2": "python tests/tier2_boundary_tests.py",
+    "test:tier3": "python tests/tier3_integration_tests.py",
+    "test:tier4": "python tests/tier4_e2e_scenarios.py"
+  },
+  "keywords": [
+    "high-ticket",
+    "revenue-engine",
+    "remote-contracts",
+    "ai-agent",
+    "rag",
+    "scraper",
+    "saas-dashboard",
+    "fastapi",
+    "kanban-cockpit",
+    "e2e-testing"
+  ],
+  "author": "Eng. Abdelrahman Rashad",
+  "license": "Proprietary",
+  "private": true
+}

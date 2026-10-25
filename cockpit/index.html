@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>غرفة قيادة الدخل البرمجي عالي القيمة | المهندس عبد الرحمن رشاد</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Top Executive Header -->
+    <header class="top-header">
+        <div class="brand-wrapper">
+            <div class="brand-icon">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <div class="brand-text">
+                <h1>غرفة قيادة الصفقات والإيرادات <span style="font-size: 14px; font-weight: 600; color: var(--text-muted);">| Global Revenue Cockpit</span></h1>
+                <p>المهندس عبد الرحمن رشاد • اقتناص عقود الستارت آب الممولة ($3,500 - $6,000/ش) وحزم أتمتة الـ B2B</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="status-pill" id="api-status-pill">
+                <span class="status-dot" id="api-status-dot"></span>
+                <span id="api-status-text">جاري فحص الاتصال بالخادم...</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-sync-feeds">
+                <i class="fas fa-sync-alt"></i> مزامنة الفرص الحية
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-add-deal">
+                <i class="fas fa-plus"></i> إضافة صفقة جديدة
+            </button>
+            <div style="display: flex; gap: 6px;">
+                <button class="btn btn-ghost btn-sm" id="btn-export-json" title="تصدير كـ JSON">
+                    <i class="fas fa-file-code"></i> JSON
+                </button>
+                <button class="btn btn-ghost btn-sm" id="btn-export-csv" title="تصدير كـ CSV">
+                    <i class="fas fa-file-csv"></i> CSV
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Revenue KPI Cards -->
+    <section class="kpi-grid">
+        <!-- KPI 1: Active MRR -->
+        <div class="kpi-card kpi-emerald">
+            <div class="kpi-header">
+                <span class="kpi-title">الدخل الشهري المتكرر الفعلي (Active MRR)</span>
+                <i class="fas fa-wallet kpi-icon"></i>
+            </div>
+            <div class="kpi-value" id="kpi-mrr-value">$10,000/ش</div>
+            <div class="kpi-meta">
+                <span class="kpi-badge positive" id="kpi-arr-value">$120,000 ARR</span>
+                <span>عقود موقعة ونشطة</span>
+            </div>
+        </div>
+
+        <!-- KPI 2: In-Flight Pipeline -->
+        <div class="kpi-card kpi-amber">
+            <div class="kpi-header">
+                <span class="kpi-title">الصفقات قيد التفاوض والمقابلات (In-Flight)</span>
+                <i class="fas fa-comments-dollar kpi-icon"></i>
+            </div>
+            <div class="kpi-value" id="kpi-inflight-value">$15,800</div>
+            <div class="kpi-meta">
+                <span class="kpi-badge" style="background: var(--accent-amber-subtle); color: var(--accent-amber);">مرحلة متقدمة</span>
+                <span>مقابلات + عروض مرسلة</span>
+            </div>
+        </div>
+
+        <!-- KPI 3: Win Rate -->
+        <div class="kpi-card kpi-violet">
+            <div class="kpi-header">
+                <span class="kpi-title">نسبة تحويل الصفقات (Win Rate)</span>
+                <i class="fas fa-chart-line kpi-icon"></i>
+            </div>
+            <div class="kpi-value" id="kpi-winrate-value">66.7%</div>
+            <div class="kpi-meta">
+                <span class="kpi-badge" style="background: var(--accent-violet-subtle); color: var(--accent-violet);">كفاءة إغلاق عالية</span>
+                <span>المشاريع المكتملة</span>
+            </div>
+        </div>
+
+        <!-- KPI 4: Total Pipeline Value -->
+        <div class="kpi-card kpi-cyan">
+            <div class="kpi-header">
+                <span class="kpi-title">إجمالي القيمة التقديرية للمسار (Total Pipeline)</span>
+                <i class="fas fa-layer-group kpi-icon"></i>
+            </div>
+            <div class="kpi-value" id="kpi-total-value">$46,800</div>
+            <div class="kpi-meta">
+                <span class="kpi-badge" style="background: var(--accent-cyan-subtle); color: var(--accent-cyan);">فرص مؤهلة</span>
+                <span>لكل المراحل النشطة</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation View Tabs -->
+    <nav class="view-tabs-bar">
+        <div class="tabs-group">
+            <button class="tab-btn active" id="tab-kanban">
+                <i class="fas fa-columns"></i>
+                <span>مسار الصفقات (Kanban Board)</span>
+                <span class="tab-count" id="kanban-count-badge">10</span>
+            </button>
+            <button class="tab-btn" id="tab-explorer">
+                <i class="fas fa-compass"></i>
+                <span>مستكشف الفرص الحية (Live Feed Explorer)</span>
+                <span class="tab-count" id="explorer-count-badge">6</span>
+            </button>
+        </div>
+
+        <div style="font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-info-circle"></i>
+            <span>يمكنك سحب وإفلات البطاقات لتحديث مسار العميل تلقائياً</span>
+        </div>
+    </nav>
+
+    <!-- VIEW 1: 6-Stage Kanban Board -->
+    <main id="view-kanban" class="kanban-view">
+        <div class="kanban-board" id="kanban-board">
+            <!-- Columns injected dynamically via app.js -->
+        </div>
+    </main>
+
+    <!-- VIEW 2: Live Feed Explorer -->
+    <section id="view-explorer" class="explorer-view" style="display: none;">
+        <!-- Filters Toolbar -->
+        <div class="filter-bar">
+            <div class="search-input-group">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" class="input-text" placeholder="بحث بالشركة، المسمى الوظيفي، أو المهارات المطلوبة...">
+            </div>
+
+            <select id="salary-filter" class="filter-select">
+                <option value="3500">الحد الأدنى: $3,500/شهر (العقود عالية القيمة)</option>
+                <option value="4500">الحد الأدنى: $4,500/شهر</option>
+                <option value="5500">الحد الأدنى: $5,500/شهر</option>
+                <option value="6000">الحد الأدنى: $6,000/شهر</option>
+            </select>
+
+            <select id="tag-filter" class="filter-select">
+                <option value="">جميع المهارات التقنية</option>
+                <option value="next.js">Next.js 15 & React</option>
+                <option value="python">Python & RAG</option>
+                <option value="node">Node.js & Microservices</option>
+                <option value="ai">AI Agents & LLM</option>
+                <option value="full stack">Full-Stack Architecture</option>
+            </select>
+
+            <select id="source-filter" class="filter-select">
+                <option value="">جميع المنصات</option>
+                <option value="remoteok">RemoteOK</option>
+                <option value="hacker news">Hacker News</option>
+                <option value="y combinator">Y Combinator</option>
+                <option value="direct">Direct Outbound</option>
+            </select>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>المسمى الوظيفي والفرصة</th>
+                        <th>الشركة الراعية</th>
+                        <th>المقابل المالي التقديري</th>
+                        <th>المهارات المتطابقة</th>
+                        <th>المصدر</th>
+                        <th style="text-align: left;">الإجراءات السريعة</th>
+                    </tr>
+                </thead>
+                <tbody id="explorer-table-body">
+                    <!-- Rows injected dynamically via app.js -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 3: Enterprise AI & Automation Suite Showcase -->
+    <section class="solutions-section">
+        <div class="section-heading">
+            <h2>
+                <i class="fas fa-cube" style="color: var(--accent-emerald);"></i>
+                حزم حلول الذكاء الاصطناعي والأتمتة الجاهزة للبيع للشركات ($1,500 - $4,000 للمشروع)
+            </h2>
+            <span style="font-size: 13px; color: var(--text-muted);">عروض تقنية متكاملة جاهزة للعرض الفوري على المؤسسين</span>
+        </div>
+
+        <div class="solution-grid">
+            <!-- Product 1 -->
+            <div class="solution-card">
+                <div>
+                    <div class="solution-top">
+                        <span class="solution-title">1. نظام Enterprise AI Agent & RAG</span>
+                        <span class="solution-price">$2,500</span>
+                    </div>
+                    <p class="solution-desc" style="margin-top: 10px;">
+                        محرك ذكاء اصطناعي هجين (BM25 + Vector RRF) مع استعلام قواعد البيانات الذكي ودرع أمان SafeSQL الصارم لمنع أي أوامر تدميرية.
+                    </p>
+                    <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                        <span class="tag-pill">Hybrid RRF</span>
+                        <span class="tag-pill">SafeSQL Barrier</span>
+                        <span class="tag-pill">Offline Mock</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 16px;">
+                    <button class="btn btn-secondary btn-sm" style="flex: 1;" onclick="openPitchDrawerWithCustom('Enterprise AI Agent & RAG Package', 'Target Enterprise Client', ['python', 'rag', 'sql', 'ai'], 'founder')">
+                        <i class="fas fa-feather-alt"></i> توليد عرض بيع B2B
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="solution-card">
+                <div>
+                    <div class="solution-top">
+                        <span class="solution-title">2. محرك Python Web Scraping & Pipeline</span>
+                        <span class="solution-price">$1,800</span>
+                    </div>
+                    <p class="solution-desc" style="margin-top: 10px;">
+                        أتمتة تعدين البيانات وتخطي أنظمة الحماية بتدوير User-Agents وتطبيق Client Hints مع محدد معدل الطلبات وحفظ SQLite UPSERT بدون تكرار.
+                    </p>
+                    <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                        <span class="tag-pill">Anti-Bot Bypass</span>
+                        <span class="tag-pill">Token Bucket</span>
+                        <span class="tag-pill">SQLite UPSERT</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 16px;">
+                    <button class="btn btn-secondary btn-sm" style="flex: 1;" onclick="openPitchDrawerWithCustom('Resilient Python Scraping & Intelligence Pipeline', 'Data-Driven Enterprise', ['python', 'scraping', 'automation', 'sqlite'], 'founder')">
+                        <i class="fas fa-feather-alt"></i> توليد عرض بيع B2B
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="solution-card">
+                <div>
+                    <div class="solution-top">
+                        <span class="solution-title">3. لوحة تحكم SaaS التنفيذية</span>
+                        <span class="solution-price">$3,500</span>
+                    </div>
+                    <p class="solution-desc" style="margin-top: 10px;">
+                        لوحة تحكم إدارية عصرية بـ Next.js 15 و Tailwind CSS بزمن استجابة 24ms لمراقبة أسطول وكلاء الذكاء الاصطناعي ومؤشرات الإيرادات.
+                    </p>
+                    <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                        <span class="tag-pill">Next.js 15</span>
+                        <span class="tag-pill">Anti-Slop UI</span>
+                        <span class="tag-pill">Fleet Monitor</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 16px;">
+                    <button class="btn btn-secondary btn-sm" style="flex: 1;" onclick="openPitchDrawerWithCustom('Executive SaaS Dashboard (Next.js 15)', 'SaaS Startup', ['next.js', 'react 19', 'tailwind', 'analytics'], 'founder')">
+                        <i class="fas fa-feather-alt"></i> توليد عرض بيع B2B
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Pitch Generator Drawer -->
+<div class="drawer-overlay" id="pitch-drawer-overlay">
+    <div class="drawer-content">
+        <div class="drawer-header">
+            <div>
+                <h3 style="font-size: 16px; font-weight: 800; color: #fff;">
+                    <i class="fas fa-feather-alt" style="color: var(--accent-cyan);"></i>
+                    مولد العروض التنفيذي بضغطة زر (1-Click Pitch Generator)
+                </h3>
+                <p id="pitch-target-role" style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Senior Full-Stack Engineer • Startup</p>
+            </div>
+            <button class="close-btn" id="close-pitch-drawer">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="drawer-body">
+            <!-- Persona Switcher -->
+            <div class="form-group">
+                <label class="form-label">اختر أسلوب وجمهور الخطاب (Target Persona):</label>
+                <div class="tone-selector">
+                    <button class="tone-btn active" id="tone-cto">
+                        <i class="fas fa-code-branch"></i> خطاب الـ CTO (الهندسة والكفاءة)
+                    </button>
+                    <button class="tone-btn" id="tone-founder">
+                        <i class="fas fa-rocket"></i> خطاب المؤسس (السرعة والـ ROI)
+                    </button>
+                    <button class="tone-btn" id="tone-freelance">
+                        <i class="fas fa-handshake"></i> عقد فوري (Freelance Retainer)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Subject Line -->
+            <div class="form-group">
+                <label class="form-label">عنوان الرسالة (Email Subject):</label>
+                <input type="text" id="pitch-subject" class="form-input font-mono" style="font-size: 12px;">
+            </div>
+
+            <!-- Pitch Content -->
+            <div class="form-group">
+                <label class="form-label">نص الخطاب المقنع (Pitch Body):</label>
+                <textarea id="pitch-body" class="pitch-preview-box"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary btn-sm" id="btn-mail-pitch">
+                <i class="fas fa-paper-plane"></i> فتح برنامج البريد (Mailto)
+            </button>
+            <button class="btn btn-primary btn-sm" id="btn-copy-pitch">
+                <i class="fas fa-copy"></i> نسخ الخطاب بالكامل
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Add Deal Modal -->
+<div class="modal-overlay" id="add-deal-modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3><i class="fas fa-plus-circle" style="color: var(--accent-cyan);"></i> إضافة صفقة جديدة إلى المسار</h3>
+            <button class="close-btn" id="close-add-deal-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="add-deal-form">
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label">المسمى الوظيفي / نوع العقد *</label>
+                        <input type="text" id="deal-title-input" class="form-input" placeholder="مثال: Senior Full-Stack Architect" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">اسم الشركة / العميل *</label>
+                        <input type="text" id="deal-company-input" class="form-input" placeholder="مثال: Nexus Labs AI" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label">مرحلة الـ Kanban الأولية</label>
+                        <select id="deal-stage-select" class="form-select">
+                            <option value="leads">محتمل (Leads)</option>
+                            <option value="pitched">تم التقديم (Pitched)</option>
+                            <option value="interviewing">مرحلة المقابلات (Interviewing)</option>
+                            <option value="contract_sent">إرسال العقد (Contract Sent)</option>
+                            <option value="won">عقد نشط وموقع (Won / Active)</option>
+                            <option value="closed">مؤرشف / ملغى (Closed)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">القيمة الشهرية المتوقعة ($) *</label>
+                        <input type="number" id="deal-value-input" class="form-input" value="5000" min="500" step="100" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label class="form-label">المصدر (Source)</label>
+                        <input type="text" id="deal-source-input" class="form-input" placeholder="RemoteOK / YC / Hacker News / Direct" value="Hacker News">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">المهارات التقنية (مفصولة بفواصل)</label>
+                        <input type="text" id="deal-skills-input" class="form-input" placeholder="next.js, python, ai, node" value="next.js, python, ai">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">اسم جهة الاتصال / الشخص المسؤول</label>
+                    <input type="text" id="deal-contact-input" class="form-input" placeholder="مثال: Alex (CTO) أو hiring@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ملاحظات استراتيجية وسياق المقابلة</label>
+                    <textarea id="deal-notes-input" class="form-textarea" placeholder="تفاصيل العقد، موعد المقابلة، نقاط القوة المطلوب التركيز عليها..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-cancel-add-deal">إلغاء</button>
+                <button type="submit" class="btn btn-primary btn-sm">حفظ وإضافة للمسار</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Global Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Quick Pitch Helper for Solution Cards -->
+<script>
+    function openPitchDrawerWithCustom(role, company, skills, tone) {
+        if (window.cockpitQuickPitch) {
+            window.cockpitQuickPitch(role, company, skills, tone);
+        } else {
+            const roleEl = document.getElementById('pitch-target-role');
+            if (roleEl) roleEl.textContent = role + ' • ' + company;
+            const overlay = document.getElementById('pitch-drawer-overlay');
+            if (overlay) overlay.classList.add('active');
+            const sub = document.getElementById('pitch-subject');
+            const body = document.getElementById('pitch-body');
+            if (sub) sub.value = 'Accelerating ' + company + ' Growth: ' + role + ' (Eng. Abdelrahman Rashad)';
+            if (body) {
+                body.value = 'Hi ' + company + ' Leadership Team,\n\n' +
+                    'As a Senior Full-Stack Engineer & AI Solutions Architect, I deliver turnkey B2B solutions with verified ROI.\n\n' +
+                    'Deliverables include:\n' +
+                    '• Production-ready ' + role + '.\n' +
+                    '• Clean modular code with 100% automated test coverage.\n' +
+                    '• Sub-50ms latency and high-converting modern UI.\n\n' +
+                    'Let us schedule a brief 10-minute technical demonstration.\n\n' +
+                    'Best regards,\nEng. Abdelrahman Rashad';
+            }
+        }
+    }
+</script>
+<script src="app.js"></script>
+</body>
+</html>

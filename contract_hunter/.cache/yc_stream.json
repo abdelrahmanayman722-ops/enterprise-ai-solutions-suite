@@ -1,0 +1,309 @@
+{
+  "_key": "yc_stream",
+  "_cached_at": 1792742357.5686252,
+  "_cached_iso": "2026-10-23T07:59:17.568625+00:00",
+  "data": [
+    {
+      "source_id": "yc_100517",
+      "title": "Senior Engineer",
+      "company": "Kivo Health",
+      "funding_stage": "YC W23",
+      "salary_range": "$200K - $260K",
+      "company_one_liner": "AI-powered care for seniors with chronic disease",
+      "location": "Seattle",
+      "skills": [
+        "React Native"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D100517&defaults%5BsignUpActive%5D=true",
+      "description": "AI-powered care for seniors with chronic disease\nSkills: React Native\nEquity: 0.15% - 0.25%",
+      "posted_date": "2026-10-23T07:59:17.568502+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_61046",
+      "title": "Software Engineer",
+      "company": "Clad",
+      "funding_stage": "YC W23",
+      "salary_range": "$180K - $250K",
+      "company_one_liner": "Project management software for building infrastructure.",
+      "location": "New York, NY, US",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D61046&defaults%5BsignUpActive%5D=true",
+      "description": "Project management software for building infrastructure.\nSkills: \nEquity: 0.25% - 0.80%",
+      "posted_date": "2026-10-23T07:59:17.568515+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_117857",
+      "title": "Forward Deployed Engineer",
+      "company": "Reflex",
+      "funding_stage": "YC W23",
+      "salary_range": "$110K - $155K",
+      "company_one_liner": "The operating system for building mission-critical enterprise apps.",
+      "location": "San Francisco, CA, US",
+      "skills": [
+        "SQL"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D117857&defaults%5BsignUpActive%5D=true",
+      "description": "The operating system for building mission-critical enterprise apps.\nSkills: SQL\nEquity: 0.10%",
+      "posted_date": "2026-10-23T07:59:17.568519+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_113898",
+      "title": "AI Engineer / Lead",
+      "company": "Dill",
+      "funding_stage": "YC W23",
+      "salary_range": "$160K - $200K",
+      "company_one_liner": "Dill helps construction suppliers automate accounts receivable,…",
+      "location": "US / Remote (US)",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D113898&defaults%5BsignUpActive%5D=true",
+      "description": "Dill helps construction suppliers automate accounts receivable,…\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568521+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_95790",
+      "title": "Senior Software Engineer, Full Stack",
+      "company": "Postscript",
+      "funding_stage": "YC W19",
+      "salary_range": "$175K - $205K",
+      "company_one_liner": "The SMS revenue platform for e-commerce merchants",
+      "location": "PDE / Remote (US; CA)",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D95790&defaults%5BsignUpActive%5D=true",
+      "description": "The SMS revenue platform for e-commerce merchants\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568524+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_75960",
+      "title": "Full-Stack Software Developer 2",
+      "company": "Finni Health",
+      "funding_stage": "YC W23",
+      "salary_range": "$120K - $160K",
+      "company_one_liner": "Empowering Autism Care Providers to Go Independent",
+      "location": "San Francisco, CA, US / Toronto, ON, CA / Toronto, Ontario, CA / Remote (US; CA)",
+      "skills": [
+        "React Native"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D75960&defaults%5BsignUpActive%5D=true",
+      "description": "Empowering Autism Care Providers to Go Independent\nSkills: React Native\nEquity: 0.05% - 0.10%",
+      "posted_date": "2026-10-23T07:59:17.568526+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_79903",
+      "title": "Product Engineer",
+      "company": "Axle",
+      "funding_stage": "YC S22",
+      "salary_range": "$120K - $160K",
+      "company_one_liner": "AI-native clearinghouse for insurance",
+      "location": "New York, NY, US",
+      "skills": [
+        "TypeScript"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D79903&defaults%5BsignUpActive%5D=true",
+      "description": "AI-native clearinghouse for insurance\nSkills: TypeScript\nEquity: 0.05% - 0.15%",
+      "posted_date": "2026-10-23T07:59:17.568528+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_82495",
+      "title": "Senior Software Engineer",
+      "company": "Noloco",
+      "funding_stage": "YC S21",
+      "salary_range": "€75 - €95 EUR",
+      "company_one_liner": "Flexible Business Apps for Modern Teams",
+      "location": "Barcelona, CT, ES / Barcelona, Catalonia, ES / Remote (Dublin, D, IE; Dublin, County Dublin, IE)",
+      "skills": [
+        "Node.js"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D82495&defaults%5BsignUpActive%5D=true",
+      "description": "Flexible Business Apps for Modern Teams\nSkills: Node.js\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568530+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_100835",
+      "title": "Forward Deployed Engineer, Test & Validation",
+      "company": "Ohm",
+      "funding_stage": "YC W23",
+      "salary_range": "$120k - $160k",
+      "company_one_liner": "Ohm helps engineering teams accelerate hardware development & testing.",
+      "location": "San Francisco, CA / Remote (US)",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D100835&defaults%5BsignUpActive%5D=true",
+      "description": "Ohm helps engineering teams accelerate hardware development & testing.\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568532+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_52813",
+      "title": "Mechanical Engineer - Robotics",
+      "company": "Nextera Robotics | DIDGE.ai",
+      "funding_stage": "YC S20",
+      "salary_range": "$110K - $140K",
+      "company_one_liner": "AI-native Robotics",
+      "location": "Boston, MA",
+      "skills": [
+        "CAD Design"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D52813&defaults%5BsignUpActive%5D=true",
+      "description": "AI-native Robotics\nSkills: CAD Design\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568534+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_94775",
+      "title": "Research Engineer, Multimodal Data",
+      "company": "Eventual",
+      "funding_stage": "YC W22",
+      "salary_range": "$150K - $300K",
+      "company_one_liner": "Building the AI data engine for any modality and scale",
+      "location": "San Francisco",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D94775&defaults%5BsignUpActive%5D=true",
+      "description": "Building the AI data engine for any modality and scale\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568535+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_116459",
+      "title": "FDE (Forward Deployment Engineer)",
+      "company": "REVER",
+      "funding_stage": "YC S22",
+      "salary_range": "$35K - $50K",
+      "company_one_liner": "Changing the way people buy by giving superpowers to shoppers",
+      "location": "Barcelona, CT, ES / Barcelona, Catalonia, ES",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D116459&defaults%5BsignUpActive%5D=true",
+      "description": "Changing the way people buy by giving superpowers to shoppers\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568537+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_100474",
+      "title": "Staff Full Stack Engineer",
+      "company": "Sully",
+      "funding_stage": "YC S21",
+      "salary_range": "$200K - $300K",
+      "company_one_liner": "Autonomous team of AI agents that runs the entire hospital operations",
+      "location": "Mountain View, CA, US",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D100474&defaults%5BsignUpActive%5D=true",
+      "description": "Autonomous team of AI agents that runs the entire hospital operations\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568539+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_113110",
+      "title": "AI Engineer",
+      "company": "BlueCargo",
+      "funding_stage": "YC S18",
+      "salary_range": "$130K - $190K",
+      "company_one_liner": "The automated solution for complex freight transactions.",
+      "location": "Los Angeles, CA, US / Remote (US)",
+      "skills": [
+        "AI Agents"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D113110&defaults%5BsignUpActive%5D=true",
+      "description": "The automated solution for complex freight transactions.\nSkills: AI Agents\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568540+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_59310",
+      "title": "Software Engineer",
+      "company": "Candid Health",
+      "funding_stage": "YC W20",
+      "salary_range": "$135K - $200K",
+      "company_one_liner": "The autonomous revenue cycle management platform.",
+      "location": "San Francisco, CA, US / New York, NY, US / Denver, CO, US",
+      "skills": [
+        "Python"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D59310&defaults%5BsignUpActive%5D=true",
+      "description": "The autonomous revenue cycle management platform.\nSkills: Python\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568542+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_78001",
+      "title": "Software Engineer (Product)",
+      "company": "Numeral",
+      "funding_stage": "YC W23",
+      "salary_range": "$180K - $300K",
+      "company_one_liner": "The AI-native sales tax solution.",
+      "location": "HQ / New York, NY, US / Remote (US)",
+      "skills": [
+        "React"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D78001&defaults%5BsignUpActive%5D=true",
+      "description": "The AI-native sales tax solution.\nSkills: React\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568544+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_88916",
+      "title": "Software Engineer",
+      "company": "Middesk",
+      "funding_stage": "YC W19",
+      "salary_range": "$148K - $250K",
+      "company_one_liner": "We make it easier for B2B companies to transact with one another",
+      "location": "San Francisco / New York, NY, US",
+      "skills": [
+        "Ruby on Rails"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D88916&defaults%5BsignUpActive%5D=true",
+      "description": "We make it easier for B2B companies to transact with one another\nSkills: Ruby on Rails\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568545+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_41302",
+      "title": "Product Engineer, Post Batch",
+      "company": "Y Combinator",
+      "funding_stage": "YC",
+      "salary_range": "$185K - $485K",
+      "company_one_liner": "Make something people want.",
+      "location": "San Francisco, CA",
+      "skills": [
+        "Amazon Web Services (AWS)"
+      ],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D41302&defaults%5BsignUpActive%5D=true",
+      "description": "Make something people want.\nSkills: Amazon Web Services (AWS)\nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568547+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_116081",
+      "title": "Autonomous Vehicle Test Specialist – San Francisco",
+      "company": "Polymath Robotics",
+      "funding_stage": "YC S22",
+      "salary_range": "$70K - $100K",
+      "company_one_liner": "General Autonomy for Industrial Vehicles",
+      "location": "San Francisco, CA, US",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D116081&defaults%5BsignUpActive%5D=true",
+      "description": "General Autonomy for Industrial Vehicles\nSkills: \nEquity: 0.01% - 0.03%",
+      "posted_date": "2026-10-23T07:59:17.568549+00:00",
+      "source_platform": "ycombinator"
+    },
+    {
+      "source_id": "yc_115251",
+      "title": "Engineering Manager, Data Platform",
+      "company": "OneChronos",
+      "funding_stage": "YC S16",
+      "salary_range": "$180K - $250K",
+      "company_one_liner": "The Smart Market for Institutional Investors",
+      "location": "New York, NY, US",
+      "skills": [],
+      "url": "https://account.ycombinator.com/authenticate?continue=https%3A%2F%2Fwww.workatastartup.com%2Fapplication%3Fsignup_job_id%3D115251&defaults%5BsignUpActive%5D=true",
+      "description": "The Smart Market for Institutional Investors\nSkills: \nEquity:",
+      "posted_date": "2026-10-23T07:59:17.568551+00:00",
+      "source_platform": "ycombinator"
+    }
+  ]
+}
